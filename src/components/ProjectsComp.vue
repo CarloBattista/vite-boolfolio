@@ -12,7 +12,7 @@
           <h3 class="info_pr title_pr">{{ elem.title_project }}</h3>
           <h3 class="info_pr client_pr"><span class="off_label">Client:</span> {{ elem.client }}</h3>
           <p class="info_pr desc_pr"><span class="off_label">Description:</span> {{ elem.description_project }}</p>
-          <div class="extra_info">
+          <div class="extra_info" v-if="elem.technologies">
             <h3 class="info_pr title_sec">Technologies used:</h3>
             <span class="tech_label" v-for="(elem, index) in elem.technologies" :key="index">{{ elem.name_technology }},</span>
           </div>
