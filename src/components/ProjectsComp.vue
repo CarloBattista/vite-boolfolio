@@ -6,12 +6,16 @@
     <div class="row_projects">
       <div class="card_project" v-for="(elem, index) in projects" :key="index">
         <div class="wrap_image">
-          <img class="image_project" :src="elem.project_image" :alt="elem.title_project + ' Image project'">
+          <img class="image_project" :src="pathApi + '/storage/' + elem.project_images" :alt="elem.title_project + ' Image project'">
         </div>
         <div class="wrap_info">
           <h3 class="info_pr title_pr">{{ elem.title_project }}</h3>
-          <h3 class="info_pr client_pr">{{ elem.client }}</h3>
-          <p class="info_pr desc_pr">{{ elem.description_project }}</p>
+          <h3 class="info_pr client_pr"><span class="off_label">Client:</span> {{ elem.client }}</h3>
+          <p class="info_pr desc_pr"><span class="off_label">Description:</span> {{ elem.description_project }}</p>
+          <div class="extra_info">
+            <h3 class="info_pr title_sec">Technologies used:</h3>
+            <span class="tech_label" v-for="(elem, index) in elem.technologies" :key="index">{{ elem.name_technology }},</span>
+          </div>
         </div>
       </div>
     </div>
@@ -105,17 +109,45 @@ export default {
 }
 
 .client_pr {
-  color: #aaa;
+  color: #e1e1e1;
   font-size: .8rem;
   font-weight: 400;
   margin-bottom: 3px;
 }
 
 .desc_pr {
-  color: #aaa;
+  color: #e1e1e1;
   font-size: .8rem;
   font-weight: 400;
   margin-bottom: 3px;
+}
+
+.off_label{
+  color: #aaa;
+  font-size: .8rem;
+  font-weight: 400;
+}
+
+.extra_info{
+  margin-top: 1em;
+}
+
+.title_sec {
+  color: #aaa;
+  font-size: .8rem;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.tech_label{
+  color: #e1e1e1;
+  font-size: .8rem;
+  font-weight: 400;
+  margin-right: 6px;
+}
+
+.tech_label:last-child{
+  margin-right: 0;
 }
 
 /* Media Query's */
