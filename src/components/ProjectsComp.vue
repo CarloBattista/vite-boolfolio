@@ -9,7 +9,7 @@ export default {
   name: "ProjectsComp",
   data() {
     return {
-      projects: [],
+      projects: []
     }
   },
   mounted() {
