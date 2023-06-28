@@ -9,7 +9,8 @@ export default {
   name: "ProjectsComp",
   data() {
     return {
-      projects: []
+      projects: [],
+      pathApi: "http://127.0.0.1:8000/api",
     }
   },
   mounted() {
@@ -17,7 +18,7 @@ export default {
   },
   methods: {
     getProjects() {
-      axios.get('http://127.0.0.1:8000/api/projects')
+      axios.get(`${this.pathApi}/projects`)
         .then(res => {
           this.projects = res.data.projects
           console.log(res.data)
