@@ -1,5 +1,21 @@
 <template>
-  <div>Projects</div>
+  <div class="container_projects">
+    <div class="rowHeader">
+      <h2 class="heading">Projects</h2>
+    </div>
+    <div class="row_projects">
+      <div class="card_project" v-for="(elem, index) in projects" :key="index">
+        <div class="wrap_image">
+          <img class="image_project" :src="elem.project_image" :alt="elem.title_project + ' Image project'">
+        </div>
+        <div class="wrap_info">
+          <h3 class="info_pr title_pr">{{ elem.title_project }}</h3>
+          <h3 class="info_pr client_pr">{{ elem.client }}</h3>
+          <p class="info_pr desc_pr">{{ elem.description_project }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -28,4 +44,99 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.container_projects {
+  position: relative;
+  width: 100%;
+  padding: 3vw 60px;
+}
+
+.rowHeader {
+  margin-bottom: 12px;
+}
+
+.heading {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.row_projects {
+  width: 100%;
+  display: grid;
+  gap: 1.5em;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.card_project {
+  width: 100%;
+  border-radius: 10px;
+  aspect-ratio: 9 / 10;
+  padding: 1em;
+  background: rgba(74, 74, 23, 0.2);
+  border: 1px solid rgba(74, 74, 23, 0.5);
+  backdrop-filter: blur(3px);
+  cursor: pointer;
+}
+
+.wrap_image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.image_project {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  object-fit: cover;
+}
+
+.wrap_info {
+  margin-top: 10px;
+}
+
+.title_pr {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.client_pr {
+  color: #aaa;
+  font-size: .8rem;
+  font-weight: 400;
+  margin-bottom: 3px;
+}
+
+.desc_pr {
+  color: #aaa;
+  font-size: .8rem;
+  font-weight: 400;
+  margin-bottom: 3px;
+}
+
+/* Media Query's */
+@media only screen and (max-width: 1100px) {
+  .row_projects {
+    gap: 1.5em;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .row_projects {
+    gap: 1.5em;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .row_projects {
+    gap: 1.5em;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
